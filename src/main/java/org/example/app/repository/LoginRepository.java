@@ -1,4 +1,4 @@
-package org.example.app.services;
+package org.example.app.repository;
 
 import org.apache.log4j.Logger;
 import org.example.web.dto.LoginForm;
@@ -19,7 +19,7 @@ public class LoginRepository implements UserRepository<LoginForm> {
 
     @Override
     public void save(LoginForm loginForm) {
-        Integer isExists = 0;
+        int isExists = 0;
         for (LoginForm user : retreiveAll()) {
             if (user.getUsername().equals(loginForm.getUsername()) && user.getPassword().equals(loginForm.getPassword())) {
                 logger.info("Exists user: " + user);
@@ -35,7 +35,7 @@ public class LoginRepository implements UserRepository<LoginForm> {
 
     @Override
     public boolean authUser(LoginForm loginForm) {
-        Integer isExists = 0;
+        int isExists = 0;
         for (LoginForm user : retreiveAll()) {
             if (user.getUsername().equals(loginForm.getUsername()) && user.getPassword().equals(loginForm.getPassword())) {
                 logger.info("Exists user: " + user);
